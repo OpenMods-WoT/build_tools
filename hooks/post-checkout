@@ -1,6 +1,6 @@
 #!/bin/bash
-cp hooks/* .git/hooks/
-py -2 source/scripts/compile/mtimestore.py -r
+cp build_tools/hooks/* .git/hooks/
+py -2 build_tools/mtimestore.py -r
 #git update-index --refresh #causes some problems under windows tortoise git
 if [[ -d $(git rev-parse --git-path rebase-merge)\
       || -d $(git rev-parse --git-path rebase-apply) ]]; then
