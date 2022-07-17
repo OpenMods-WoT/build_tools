@@ -195,7 +195,10 @@ def pack_stuff(zf_new, mode, tree, arc_data, v_str, v_date, v_was, cur_path):
             else:
                 v_was |= pack_directory(zf_new, mode, sub_path, min_time.timetuple()[:6], v_str, v_date)
         else:
-            path = glob.glob(arc_data[sub_path])[0].replace(os.sep, '/')
+            paths = glob.glob(arc_data[sub_path])
+            if not paths:
+                raise ValueError('file %s does not exist' % arc_data[sub_path])
+            path = paths[0].replace(os.sep, '/')
             with open(path, 'rb') as f:
                 st_time = get_stat_size_time(path)[1]
                 min_time = min(min_time, datetime(*st_time))
