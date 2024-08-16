@@ -14,7 +14,7 @@ if ERRORLEVEL 1 (
 )
 echo Launching Beyond Compare...
 set /p ver=<build_data\GAME_VERSION
-for /F "tokens=*" %%A in (build_data\debug_targets.txt) do ("BCompare.exe" build\wotmods\ "%%A\mods\%ver%\" /solo)
+for /F "tokens=*" %%A in (build_data\debug_targets.txt) do ("BCompare.exe" build\wotmods\ "%%A" /solo)
 :not_found
 echo Exiting.
 pause
